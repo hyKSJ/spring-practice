@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+	<!-- 기본생성자로 빈 생성하기 -->
+	<bean id="user" name="usr" class="com.poscodx.container.user.User" />
+
+	<!-- 파라미터 1개인 생성자로 빈 생성하기 -->
+	<bean id="user2" class="com.poscodx.container.user.User">
+		<constructor-arg value="마이콜" />
+	</bean>
+
+	<!-- 파라미터 2개인 생성자로 빈 생성하기 -->
+	<bean id="user3" class="com.poscodx.container.user.User">
+		<!-- <constructor-arg value="3"/> <constructor-arg value="또치"/> -->
+		<constructor-arg index="1" value="또치" />
+		<constructor-arg index="0" value="3" />
+	</bean>
+
+	<!-- setter 사용하기 -->
+	<bean id="user4" class="com.poscodx.container.user.User">
+		<property name="no" value="5" />
+		<property name="name" value="길동" />
+	</bean>
+
+	<!-- DI 하기 -->
+	<bean id="friend" class="com.poscodx.container.user.Friend">
+		<constructor-arg value="영희" />
+	</bean>
+	<bean id="user5" class="com.poscodx.container.user.User">
+		<property name="no" value="6" />
+		<property name="name" value="철수" />
+		<property name="friend" ref="friend" />
+	</bean>
+	
+	<!-- setter를 사용한 List(Collection) 세팅하기 -->
+	<bean id="user6" class="com.poscodx.container.user.User">
+		<property name="no" value="7" />
+		<property name="name" value="아이언맨" />
+		<property name="friends">
+			<list>
+				<value>헐크</value>
+				<value>캡틴아메리카</value>
+				<value>스파이더맨</value>
+			</list>
+		</property>
+	</bean>
+</beans>
