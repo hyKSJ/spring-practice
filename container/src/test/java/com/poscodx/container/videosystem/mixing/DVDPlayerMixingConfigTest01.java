@@ -1,7 +1,6 @@
-package com.poscodx.container.soundsystem;
+package com.poscodx.container.videosystem.mixing;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,21 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.poscodx.container.config.soundsystem.CDPlayerConfig;
+import com.poscodx.container.videosystem.DVDPlayer;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes={CDPlayerConfig.class})
-public class CDPlayerJavaConfigTest {
+@ContextConfiguration(classes={DVDPlayerConfig.class})
+public class DVDPlayerMixingConfigTest01 {
 	@Autowired
-	CDPlayer cdPlayer;
-	
-	@Test
-	public void testCDPlayerNotNull() {
-		assertNotNull(cdPlayer);
-	}
+	DVDPlayer dvdPlayer;
 	
 	@Test
 	public void testPlay() {
-		assertEquals("Playing 붕붕 by 김하온", cdPlayer.play());
+		assertEquals("Playing Movie MARVEL's Avengers Infinite War", dvdPlayer.play());
 	}
 }
